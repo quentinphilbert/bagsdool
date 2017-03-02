@@ -1,0 +1,9 @@
+#radio .container {
+    position: relative;
+    color: #F05F40;
+    z-index: 5;
+}
+
+#radio .container #player-playlist{
+    border: 2px solid #F05F40;
+}

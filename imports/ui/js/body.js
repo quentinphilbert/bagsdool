@@ -8,6 +8,7 @@ import '../templates/header.html';
 import '../templates/body.html';
 import '../templates/menu.html';
 import '../templates/chat.html';
+import '../templates/radio.html';
 import '/imports/ui/js/chat.js';
 
 Template.facebooklogin.events({

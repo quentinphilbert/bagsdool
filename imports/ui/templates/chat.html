@@ -1,29 +1,22 @@
 <template name="chat">
-    <div class="container">
-        <div class="chat_window">
-            <div class="top_menu">
-                <div class="buttons">
-                    <div class="button close"></div>
-                    <div class="button minimize"></div>
-                    <div class="button maximize"></div>
+    <section id="chat" class="fullscreen">
+        <div class="container">
+            <div class="chat_window">
+                <div class="top_menu">
+                    <div class="buttons">
+                        <div class="button close"></div>
+                        <div class="button minimize"></div>
+                        <div class="button maximize"></div>
+                    </div>
+                    <div class="title">Chat</div>
                 </div>
-                <div class="title">Chat</div>
-            </div>
-            {{> messages}}
-            <div class="bottom_wrapper clearfix">
-                {{> input}}
-
+                {{> messages}}
+                <div class="bottom_wrapper clearfix">
+                    {{> input}}
+                </div>
             </div>
         </div>
-        <div class="message_template">
-            <li class="message">
-                <div class="avatar"></div>
-                <div class="text_wrapper">
-                    <div class="text"></div>
-                </div>
-            </li>
-        </div>
-    </div>
+    </section>
 </template>
 
 <template name="input">
@@ -38,10 +31,26 @@
 <template name="messages">
     <ul class="messages">
         {{#each messages}}
-            {{> message}}
+            <div class="message_template">
+                {{#if currentUser.services.facebook.first_name = message.user}}
+                    <li class="message right appeared">
+                        <div class="avatar"></div>
+                        <div class="text_wrapper">
+                            <div class="text">{{> message}} {{message.user}}</div>
+                        </div>
+                    </li>
+                {{else}}
+                    <li class="message left appeared">
+                        <div class="avatar"></div>
+                        <div class="text_wrapper">
+                            <div class="text">{{> message}}</div>
+                        </div>
+                    </li>
+                {{/if}}
+            </div>
         {{/each}}
     </ul>
 </template>
 <template name="message">
-    <p><strong>{{user}}</strong> <span style="font-size: 0.7em; color: darkgray">({{timestamp}})</span>: <i>{{msg}}</i></p>
+    <p title="{{timestamp}}"><strong>{{user}}</strong> : <i>{{msg}}</i></p>
 </template>

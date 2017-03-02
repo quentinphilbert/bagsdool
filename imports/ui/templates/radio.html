@@ -1,0 +1,33 @@
+<template name="radio">
+    <section id="radio" class="fullscreen">
+        <div class="container">
+            <h2 class="white">ROARADIO</h2>
+
+            <div id="player-toolbar">
+                <a href="#" class="tubular-play fa fa-play"></a>
+                <a href="#" class="tubular-pause fa fa-pause"></a>
+                <a href="#" class="tubular-volume-up fa fa-volume-up"></a>
+                <a href="#" class="tubular-volume-down fa fa-volume-down"></a>
+                <a href="#" class="tubular-mute fa fa-volume-off"></a>
+            </div>
+
+            <div id="player-playlist">
+                <ul>
+                    <li youtube-id="PwehLTSy6dk">DJ Khaled - Fuck Me For Free ft. Drake</li>
+                    <li youtube-id="_xQKWnvtg6c">Skepta ft. JME - That's Not Me</li>
+                    <li youtube-id="tt7gP_IW-1w">A$AP Mob - Yamborghini High ft. Juicy J</li>
+                </ul>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#radio').tubular({videoId: '-5EQIiabJvk'});
+                $('#tubular-shield').prependTo('#radio');
+                $('#tubular-container').prependTo('#radio');
+                console.log(player.getVideoData());
+            });
+        </script>
+    </section>
+</template>
+
