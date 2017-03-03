@@ -128,9 +128,9 @@
             e.preventDefault();
             var youtubeID = e.target;
             console.log('ANOTHER SONG');
-            console.log($(youtubeID).attr('youtube-id'));
+            console.log($(youtubeID).attr('youtube_id'));
             console.log(player.getVideoData());
-            player.loadVideoById($(youtubeID).attr('youtube-id'));
+            player.loadVideoById($(youtubeID).attr('youtube_id'));
         })
     }
 

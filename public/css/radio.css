@@ -7,3 +7,8 @@
 #radio .container #player-playlist{
     border: 2px solid #F05F40;
 }
+
+#radio .container #player-playlist input {
+    background-color: transparent;
+    border: 0px;
+}
