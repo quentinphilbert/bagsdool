@@ -12,3 +12,38 @@
     background-color: transparent;
     border: 0px;
 }
+
+#radio #player-playlist {
+    width: 50%;
+}
+
+#radio h2 {
+    float: left;
+    display: block;
+    width: 30%;
+}
+
+#radio #login {
+    float: right;
+    display: block;
+    margin-top: 1%;
+}
+
+#radio .header {
+    min-height: 50px;
+}
+
+#radio #player-toolbar {
+    text-align: center;
+    font-size: 10vh !important;
+}
+
+#radio #player-toolbar .fa {
+    margin-left: 1%;
+    margin-right: 1%;
+    text-decoration: none;
+}
+
+#radio #new_track {
+    min-width: 250px;
+}

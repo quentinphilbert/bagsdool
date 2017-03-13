@@ -2,11 +2,17 @@
 <script type="text/javascript" charset="utf-8" src="./js/jquery.tubular.1.0.js"></script>
 
 {{#if currentUser}}
-    {{> chat}}
     {{> radio}}
 {{else}}
-    {{> menu}}
+    {{> radio}}
 {{/if}}
 </body>
+<template name="facebooklogin">
+    {{#if currentUser}}
+        <button id="facebook-logout">Logout</button>
+    {{else}}
+        <button id="facebook-login">Login</button>
+    {{/if}}
+</template>
 
 

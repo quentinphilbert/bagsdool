@@ -13,7 +13,7 @@
 ;(function ($, window) {
 
     // test for feature support and return if failure
-    
+
     // defaults
     var defaults = {
         ratio: 16/9, // usually either 4/3 or 16/9 -- tweak as needed
@@ -36,7 +36,7 @@
     var tubular = function(node, options) { // should be called on the wrapper div
         var options = $.extend({}, defaults, options),
             $body = $('body') // cache body node
-            $node = $(node); // cache wrapper node
+        $node = $(node); // cache wrapper node
 
         // build container
         var tubularContainer = '<div id="tubular-container" style="overflow: hidden; position: absolute; /*z-index: 1;*/ width: 100%; height: 100%"><div id="tubular-player" style="position: absolute"></div></div><div id="tubular-shield" style="width: 100%; height: 100%; z-index: 2; position: absolute; left: 0; top: 0;"></div>';
@@ -64,7 +64,9 @@
                     'onStateChange': onPlayerStateChange
                 }
             });
+
         }
+
 
         window.onPlayerReady = function(e) {
             resize();
@@ -128,9 +130,9 @@
             e.preventDefault();
             var youtubeID = e.target;
             console.log('ANOTHER SONG');
-            console.log($(youtubeID).attr('youtube_id'));
+            console.log($(youtubeID).attr('video_id'));
             console.log(player.getVideoData());
-            player.loadVideoById($(youtubeID).attr('youtube_id'));
+            player.loadVideoById($(youtubeID).attr('video_id'));
         })
     }
 
@@ -146,8 +148,8 @@
     $.fn.tubular = function (options) {
         return this.each(function () {
             if (!$.data(this, 'tubular_instantiated')) { // let's only run one
-                $.data(this, 'tubular_instantiated', 
-                tubular(this, options));
+                $.data(this, 'tubular_instantiated',
+                    tubular(this, options));
             }
         });
     }

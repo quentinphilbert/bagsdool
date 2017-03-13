@@ -1,7 +1,16 @@
 <template name="radio">
     <section id="radio" class="fullscreen">
         <div class="container">
-            <h2 class="white">ROARADIO</h2>
+            <div class="header">
+                <h2 class="white">ROARADIO</h2>
+                <div id="login" >
+                    {{#if currentUser}}
+                        {{currentUser.services.facebook.name}}<a href="#">{{> facebooklogin}}</a>
+                    {{else}}
+                        <a href="#">{{> facebooklogin}}</a>
+                    {{/if}}
+                </div>
+            </div>
 
             <div id="player-toolbar">
                 <a href="#" class="tubular-play fa fa-play"></a>
@@ -16,10 +25,16 @@
         </div>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('#radio').tubular({videoId: '-5EQIiabJvk'});
-                $('#tubular-shield').prependTo('#radio');
-                $('#tubular-container').prependTo('#radio');
-                console.log(player.getVideoData());
+                //console.log($('#player-playlist ul li').first().attr('video_id'));
+                var first_id = $('#player-playlist ul li').first().attr('video_id');
+                console.log('first video');
+                console.log(first_id);
+                if (first_id) {
+                    console.log('first video ok');
+                    $('#radio').tubular({videoId: first_id});
+                    $('#tubular-shield').prependTo('#radio');
+                    $('#tubular-container').prependTo('#radio');
+                }
             });
         </script>
     </section>
@@ -27,11 +42,16 @@
 <template name="playlist">
     <div id="player-playlist">
         <ul>
-            <li youtube_id="PwehLTSy6dk">DJ Khaled - Fuck Me For Free ft. Drake</li>
-            <li youtube_id="_xQKWnvtg6c">Skepta ft. JME - That's Not Me</li>
-            <li youtube_id="tt7gP_IW-1w">A$AP Mob - Yamborghini High ft. Juicy J</li>
-            <input type="url" placeholder="Paste your YT link in there" name="new_url">
+            {{#each tracks}}
+                {{> track}}
+            {{/each}}
+            {{#if currentUser}}
+                <input id="new_track" type="url" placeholder="Paste your YT link in there" >
+            {{/if}}
 
         </ul>
     </div>
+</template>
+<template name="track">
+    <li video_id="{{youtube_id}}">{{title}}</li>
 </template>
