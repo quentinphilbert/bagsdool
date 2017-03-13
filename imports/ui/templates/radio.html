@@ -1,0 +1,37 @@
+<template name="radio">
+    <section id="radio" class="fullscreen">
+        <div class="container">
+            <h2 class="white">ROARADIO</h2>
+            {{> facebooklogin}}
+            <div id="player-toolbar">
+                <a href="#" class="tubular-play fa fa-play"></a>
+                <a href="#" class="tubular-pause fa fa-pause"></a>
+                <a href="#" class="tubular-volume-up fa fa-volume-up"></a>
+                <a href="#" class="tubular-volume-down fa fa-volume-down"></a>
+                <a href="#" class="tubular-mute fa fa-volume-off"></a>
+            </div>
+            {{> playlist}}
+        </div>
+    </section>
+</template>
+<template name="playlist">
+    <div id="player-playlist">
+        <ul>
+            {{#each tracks}}
+                {{> track}}
+            {{/each}}
+            <input type="url" placeholder="Paste your YT link in there" name="new_url">
+
+        </ul>
+    </div>
+</template>
+<template name="track">
+    <li youtube_id="{{video_id}}">{{title}}</li>
+</template>
+<template name="facebooklogin">
+    {{#if currentUser}}
+        <button id="facebook-logout">Logout</button>
+    {{else}}
+        <button id="facebook-login">Login</button>
+    {{/if}}
+</template>
