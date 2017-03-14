@@ -55,3 +55,10 @@
 <template name="track">
     <li video_id="{{youtube_id}}">{{title}}</li>
 </template>
+<template name="facebooklogin">
+    {{#if currentUser}}
+        <button id="facebook-logout">Logout</button>
+    {{else}}
+        <button id="facebook-login">Login</button>
+    {{/if}}
+</template>
