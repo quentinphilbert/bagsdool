@@ -11,9 +11,9 @@ import '/imports/ui/js/radio.js';
 
 Template.facebooklogin.events({
     'click #facebook-login': function(event) {
-        Meteor.loginWithFacebook({}, function(err){
+        Meteor.loginWithFacebook({requestPermissions: ['public_profile', 'email']}, function(err){
             if (err) {
-                throw new Meteor.Error("Facebook login failed");
+                console.log('Handle errors here: ', err);
             } else {
                 console.log(Meteor.user().services.facebook);
             }

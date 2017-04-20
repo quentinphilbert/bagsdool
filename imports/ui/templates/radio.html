@@ -5,7 +5,7 @@
                 <h2 class="white">ROARADIO</h2>
                 <div id="login" >
                     {{#if currentUser}}
-                        {{currentUser.services.facebook.name}}<a href="#">{{> facebooklogin}}</a>
+                        {{currentUser.profile.name}}<a href="#">{{> facebooklogin}}</a>
                     {{else}}
                         <a href="#">{{> facebooklogin}}</a>
                     {{/if}}

@@ -25,10 +25,11 @@ if (Meteor.isClient) {
         var api_url_video_info = 'https://www.googleapis.com/youtube/v3/videos?id='+ youtube_id +'&key=AIzaSyAFYbhBOfUDANOZg2uzqufER99sCTydtR8&part=snippet';
         $.getJSON(api_url_video_info, function(data) {
             var title = data.items[0].snippet.title;
-            console.log(title);
+            console.log(data);
+            console.log(Meteor.user().profile.name);
             Tracks.insert({
-                owner: Meteor.user().services.facebook.name,
-                owner_email: Meteor.user().services.facebook.email,
+                owner: Meteor.user().profile.name,
+                //owner_email: Meteor.user().services.facebook.email,
                 video_url: link,
                 youtube_id: youtube_id,
                 ts: new Date(),

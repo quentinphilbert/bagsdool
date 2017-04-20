@@ -1,19 +1,23 @@
 import { Meteor } from 'meteor/meteor';
+import { ServiceConfiguration } from 'meteor/service-configuration';
 
 Tracks = new Meteor.Collection("tracks");
 Messages = new Meteor.Collection("messages");
-Rooms = new Meteor.Collection("rooms");
 Meteor.startup(() => {
     // code to run on server at startup
     Tracks.remove({});
-
     Messages.remove({});
-    Rooms.remove({});
-    if (Rooms.find().count() === 0) {
-        ["Bagsdool"].forEach(function(r) {
-            Rooms.insert({roomname: r});
-        });
-    }
+
+    ServiceConfiguration.configurations.upsert(
+        { service: 'facebook' },
+        {
+            $set: {
+                appId: '1116334645162869',
+                loginStyle: 'popup',
+                secret: '8d3a25087aedbacb269574be6c46adce',
+            },
+        }
+    );
 
 
 });
@@ -35,17 +39,6 @@ Tracks.allow({
     }
 });
 
-Rooms.deny({
-    insert: function (userId, doc) {
-        return true;
-    },
-    update: function (userId, doc, fieldNames, modifier) {
-        return true;
-    },
-    remove: function (userId, doc) {
-        return true;
-    }
-});
 Messages.deny({
     insert: function (userId, doc) {
         return (userId === null);
@@ -57,6 +50,7 @@ Messages.deny({
         return true;
     }
 });
+
 Messages.allow({
     insert: function (userId, doc) {
         return (userId !== null);
@@ -65,8 +59,7 @@ Messages.allow({
 
 Meteor.publish("tracks", function () {
     console.log("publish tracks()");
-    console.log(Tracks.find({}, { ts: 1 }).fetch());
-    return Tracks.find({}, { ts: 1 }).fetch();
+    return Tracks.find({}, { ts: 1 });
 });
 
 Meteor.publish("messages", function () {
